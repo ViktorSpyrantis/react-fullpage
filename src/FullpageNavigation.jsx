@@ -30,7 +30,11 @@ class FullpageNavigation extends PureComponent {
 
   gotoSlide = (slide) => {
     const { goto } = this.context;
-    goto(slide);
+    if (typeof goto === "function") {
+      goto(slide);
+    } else {
+      console.warn("goto function is not available in FullpageContext");
+    }
   };
 
   render() {
