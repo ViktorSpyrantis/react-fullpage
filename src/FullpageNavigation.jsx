@@ -28,14 +28,14 @@ class FullpageNavigation extends PureComponent {
     reverse: PropTypes.bool,
   };
 
+  gotoSlide = (slide) => {
+    const { goto } = this.context;
+    goto(slide);
+  };
+
   render() {
     const { style, itemStyle, reverse = false } = this.props;
     const { number, slides, transitionTiming } = this.context;
-
-    const gotoSlide = (slide) => {
-      const { goto } = this.context;
-      goto(slide);
-    };
 
     return (
       <div
@@ -62,13 +62,13 @@ class FullpageNavigation extends PureComponent {
                 height: number === i ? 14 : 10,
                 width: number === i ? 14 : 10,
                 margin: number === i ? 3 : 5,
-                backgroundColor: reverse ? "red" : "red",
+                backgroundColor: reverse ? "white" : "black",
                 opacity: number === i ? 1 : 0.5,
                 transition: `all ${transitionTiming * 0.5}ms ease-in-out`,
                 ...itemStyle,
               }}
-              onClick={() => gotoSlide(slide)}
-              onKeyPress={() => gotoSlide(slide)}
+              onClick={() => this.gotoSlide(slide)}
+              onKeyPress={() => this.gotoSlide(slide)}
               role="button"
               tabIndex="-1"
               aria-label={`Slide ${i}`}
