@@ -3,7 +3,7 @@
  * @class FullpageNavigation
  */
 // eslint-disable-next-line react/react-in-jsx-scope
-import React, { PureComponent } from "react";
+import React, { PureComponent, forwardRef } from "react";
 import PropTypes from "prop-types";
 import FullpageContext from "./FullpageContext";
 
