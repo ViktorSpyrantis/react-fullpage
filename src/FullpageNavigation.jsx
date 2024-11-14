@@ -16,6 +16,7 @@ class FullpageNavigation extends PureComponent {
     style: {},
     itemStyle: {},
     reverse: false,
+    callback: () => {},
   };
 
   static propTypes = {
@@ -26,12 +27,15 @@ class FullpageNavigation extends PureComponent {
       PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool])
     ),
     reverse: PropTypes.bool,
+    callback: PropTypes.func,
   };
 
   gotoSlide = (slide) => {
     const { goto } = this.context;
+    const { callback } = this.props;
     if (typeof goto === "function") {
       goto(slide);
+      callback();
     } else {
       console.warn("goto function is not available in FullpageContext");
     }
